@@ -11,10 +11,3 @@ resource "azurerm_cognitive_account" "this" {
 
   sku_name = "F0"
 }
-
-resource "azurerm_search_service" "this" {
-  name                = "${local.prefix_name}-${local.config.azurerm_content_safety_service.name}"
-  resource_group_name = azurerm_resource_group.this.name
-  location            = azurerm_resource_group.this.location
-  sku                 = local.config.azurerm_content_safety_service.sku
-}
