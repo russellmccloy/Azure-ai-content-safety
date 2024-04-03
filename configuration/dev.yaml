@@ -1,0 +1,11 @@
+general:
+  prefix_name: rdmc01 # this is a prefix for creating unique naming in Azure.
+
+resource_group:
+  name: dev-azure-ai-content-safety-rg
+  location: brazilsouth
+
+azurerm_content_safety_service:
+  name: dev-azure-content-safety-service
+  sku: F0
+
