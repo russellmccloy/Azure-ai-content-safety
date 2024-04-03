@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "2ca4b802-e7ba-4fec-b2a2-27face850a5c",
+		"name": "Content Safety Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48782"
+	},
+	"item": [
+		{
+			"name": "Analyze Text",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"text\": \"A 51-year-old man was found dead in his car. There were blood stains on the dashboard and windscreen. At autopsy, a deep, oblique, long incised injury was found on the front of the neck. It turns out that he died by suicide.\",\r\n  \"categories\": [\r\n    \"Hate\",\r\n    \"SelfHarm\",\r\n    \"Violence\",\r\n    \"Sexual\"\r\n  ],\r\n  \"blocklistNames\": [],\r\n  \"haltOnBlocklistHit\": true,\r\n  \"outputType\": \"FourSeverityLevels\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{content_safety_service}}/contentsafety/text:analyze?api-version=2023-10-01",
+					"protocol": "https",
+					"host": [
+						"{{content_safety_service}}"
+					],
+					"path": [
+						"contentsafety",
+						"text:analyze"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2023-10-01"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "content_safety_service",
+			"value": "<SET_YOUR_CONTENT_SAFETY_SERVICE_ENDPOINT_HERE>",
+			"type": "string"
+		},
+		{
+			"key": "Ocp-Apim-Subscription-Key",
+			"value": "<SET_YOUR_CONTENT_SAFETY_API_KEY_HERE>",
+			"type": "string"
+		}
+	]
+}
