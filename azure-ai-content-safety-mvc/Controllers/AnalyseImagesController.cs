@@ -1,14 +1,15 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Azure.AI.ContentSafety;
 using azure_ai_content_safety_mvc.Models;
 
 namespace azure_ai_content_safety_mvc.Controllers;
 
-public class AnalyseTextController : Controller
+public class AnalyseImagesController : Controller
 {
-    private readonly ILogger<AnalyseTextController> _logger;
+    private readonly ILogger<AnalyseImagesController> _logger;
 
-    public AnalyseTextController(ILogger<AnalyseTextController> logger)
+    public AnalyseImagesController(ILogger<AnalyseImagesController> logger)
     {
         _logger = logger;
     }
