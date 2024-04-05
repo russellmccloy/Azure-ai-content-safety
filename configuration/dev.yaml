@@ -9,3 +9,10 @@ azurerm_content_safety_service:
   name: dev-azure-content-safety-service
   sku: F0
 
+azurerm_storage_account:
+  name: devcontentsafsa
+
+azurerm_storage_container:
+  name: dev-images
+  access_type: container
+

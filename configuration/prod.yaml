@@ -9,3 +9,10 @@ azurerm_content_safety_service:
   name: prod-azure-content-safety-service
   sku: F0
 
+azurerm_storage_account:
+  name: prodaicontentsafetysa
+
+azurerm_storage_container:
+  name: prod-images
+  access_type: container
+
