@@ -257,12 +257,12 @@
 	"variable": [
 		{
 			"key": "content_safety_service",
-			"value": "",
+			"value": "<ENTER_YOUR_CONTENT_SAFETY_SERVICE_NAME_HERE>",
 			"type": "string"
 		},
 		{
 			"key": "Ocp-Apim-Subscription-Key",
-			"value": "",
+			"value": "<ENTER_YOUR_CONTENT_SAFETY_KEY_HERE>",
 			"type": "string"
 		}
 	]
