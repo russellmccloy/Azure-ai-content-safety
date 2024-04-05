@@ -16,7 +16,7 @@ class Program
         string storageAccountKey = "<ENTER YOUR STORAGE ACCOUNT KEY HERE>";
 
         string connectionString = "DefaultEndpointsProtocol=https;AccountName=" + storageAccountName + ";AccountKey=" + storageAccountKey + ";EndpointSuffix=core.windows.net";
-        string containerName = "rdmc03-dev-images";  // The name of the container inside the storage account
+        string containerName = prefix + "-dev-images";  // The name of the container inside the storage account
         // ============================================================================
 
         // Enter the full, absolute path the the `offensive_images` folder
