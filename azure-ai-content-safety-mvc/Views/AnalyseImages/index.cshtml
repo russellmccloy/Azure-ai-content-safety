@@ -1,0 +1,58 @@
+@model List<azure_ai_content_safety_mvc.Models.AnalyseImagesModel>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Results</h1>
+
+<div>
+
+       
+       
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Path</th>
+                <th>Image</th>
+                <th>Content Safety Severity</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BlobClient.Name)
+                    </td>
+                    <td>
+                        @item.BlobClient.Uri
+                    </td>
+                    <td>
+                        <img src="@item.BlobClient.Uri" alt="" width="200px" />
+                    </td>
+                    <td>
+                        @{
+                            int counter = 0;
+                            bool shown = false;
+                            @foreach (var x in item.AnalyzeImageResult.CategoriesAnalysis){
+
+                                if (x.Severity > 0) {
+                                    counter++;
+                                    <div>@x.Category</div> 
+                                    <div><span style="color:red">@x.Severity</span></div> 
+                                } 
+                            }
+
+                            if(counter == 0 && shown == false) {
+                                shown = true;
+                                <div><span style="color:green">This image is safe</span></div> 
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+            </tbody>
+    </table>
+</div>

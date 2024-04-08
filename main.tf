@@ -10,6 +10,16 @@ resource "azurerm_cognitive_account" "this" {
   kind                = "ContentSafety"
 
   sku_name = local.config.azurerm_content_safety_service.sku
+
+  identity {
+    type = "SystemAssigned"
+  }
+}
+
+resource "azurerm_role_assignment" "this" {
+  scope                = azurerm_storage_account.this.id
+  role_definition_name = "Contributor"
+  principal_id         = azurerm_cognitive_account.this.identity.0.principal_id
 }
 
 resource "azurerm_storage_account" "this" {

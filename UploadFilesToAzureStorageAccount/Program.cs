@@ -12,15 +12,16 @@ class Program
     {
         // Storage account and container details
         // ============================================================================
-        string storageAccountName = "<ENTER YOUR STORAGE ACCOUNT NAME HERE>";
-        string storageAccountKey = "<ENTER YOUR STORAGE ACCOUNT KEY HERE>";
+        string storageAccountName = "<ENTER_YOUR_STORAGE_ACCOUNT_NAME_HERE>";
+        string storageAccountKey = "<ENTER_YOUR_STORAGE_ACCOUNT_KEY_HERE>";
+        string prefix = "rdmc03";   // matches the Terraform prefix
 
         string connectionString = "DefaultEndpointsProtocol=https;AccountName=" + storageAccountName + ";AccountKey=" + storageAccountKey + ";EndpointSuffix=core.windows.net";
         string containerName = prefix + "-dev-images";  // The name of the container inside the storage account
         // ============================================================================
 
         // Enter the full, absolute path the the `offensive_images` folder
-        string folderPath = @"<ENTER_THE_PATH_TO_YOUR_IMAGES_FOLDER_HERE>";
+        string folderPath = @"C:\Users\russe\code\azure-ai-content-safety\offensive_images";
 
         // Check if the folder exists
         if (Directory.Exists(folderPath))

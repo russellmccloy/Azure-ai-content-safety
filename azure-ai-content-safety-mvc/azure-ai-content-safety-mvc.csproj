@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Azure.AI.ContentSafety" Version="1.0.0" />
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.19.1" />
   </ItemGroup>
 
 </Project>

@@ -22,18 +22,13 @@ public class AnalyseTextController : Controller
     public IActionResult Index()
     {
         // Get these two values from config
-        string? endpoint = Configuration["Endpoint"];
+        string endpoint = Configuration["Endpoint"];
         string? key = Configuration["Key"];
 
 
         ContentSafetyClient client = new ContentSafetyClient(new Uri(endpoint), new AzureKeyCredential(key));
 
         string text = "Your input text";
-        return View();
-    }
-
-    public IActionResult Privacy()
-    {
         return View();
     }
 
