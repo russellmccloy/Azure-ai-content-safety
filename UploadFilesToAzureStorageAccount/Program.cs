@@ -20,7 +20,7 @@ class Program
         // ============================================================================
 
         // Enter the full, absolute path the the `offensive_images` folder
-        string folderPath = @"C:\Users\russe\code\azure-ai-content-safety\offensive_images";
+        string folderPath = @"<ENTER_THE_PATH_TO_YOUR_IMAGES_FOLDER_HERE>";
 
         // Check if the folder exists
         if (Directory.Exists(folderPath))
