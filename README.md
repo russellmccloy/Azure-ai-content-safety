@@ -4,12 +4,15 @@ Please see the related blog post here for all the information you need: [https:/
 
 ## Things to note
 
-- Remember to update the `appsettings.Development.json` file with your Content Safety endpoint and  API key
+- Remember to update the `appsettings.Development.json` file with your Content Safety endpoint,  API key and storage account settings
   
-```json 
+```json
 {
-  "Endpoint": "https://australiaeast.api.cognitive.microsoft.com/contentsafety/text:analyze?api-version=2023-10-01",  // <===== Mine looks like this
-  "ContentSafetyAPIKey": "<put_your_content_safety_api_key_here>",
+  "ContentSafetyEndpoint": "<ENTER_YOUR_CONTENT_SAFETY_ENDPOINT_HERE>",
+  "ContentSafetyKey": "<ENTER_YOUR_CONTENT_SAFETY_KEY_HERE>",
+  "StorageAccountName": "<ENTER_THE_NAME_OF_YOUR_STORAGE_ACCOUNT>",
+  "StorageAccountKey": "<ENTER_YOUR_STORAGE_ACCOUNT_KEY>",
+  "NamingPrefix": "rdmc03",
   "Logging": {
     "LogLevel": {
       "Default": "Information",
@@ -17,10 +20,6 @@ Please see the related blog post here for all the information you need: [https:/
     }
   }
 }
-
 ```
 
-- The MVC code is just thrown together and I didn't put much effort into it as it's just used to display text and images. // TODO: change this line
-
-
-
+// TODO: write something here
