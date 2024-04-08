@@ -4,7 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Results</h1>
+<h1>Azure AI Content Safety Results</h1>
 
 <div>
 
@@ -27,7 +27,7 @@
                         @Html.DisplayFor(modelItem => item.BlobClient.Name)
                     </td>
                     <td>
-                        @item.BlobClient.Uri
+                        <a href="@item.BlobClient.Uri">@item.BlobClient.Uri</a>
                     </td>
                     <td>
                         <img src="@item.BlobClient.Uri" alt="" width="200px" />
