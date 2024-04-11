@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "general": {
+      "value": {
+        "environment": "prod",
+        "prefixName": "rd",
+        "location": "australiaeast"
+      }
+    },
+    "resourceGroup": {
+      "value": {
+        "name": "azure-ai-content-safety-rg"
+      }
+    },
+    "contentSafety": {
+      "value": {
+        "name": "azure-content-safety-service",
+        "sku": "F0",
+        "apiEndpoint": "https://australiaeast.api.cognitive.microsoft.com/"
+      }
+    },
+    "storageAccountAndContainer": { 
+      "value": {
+        "name": "contsftysa",
+        "location": "australiaeast",
+        "containerName": "images",
+        "containerAccessType": "container"
+      }
+    }
+  }
+}

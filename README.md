@@ -23,3 +23,7 @@ Please see the related blog post here for all the information you need: [https:/
 ```
 
 // TODO: write something here
+
+## Bicep
+
+`az deployment sub create -f main.bicep --location australiaeast --parameters configuration/main.parameters.dev.json --confirm-with-what-if`
