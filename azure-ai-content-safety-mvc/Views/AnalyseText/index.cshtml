@@ -1,10 +1,10 @@
-@model List<azure_ai_content_safety_mvc.Models.AnalyseImagesModel>
+@model List<azure_ai_content_safety_mvc.Models.AnalyseTextModel>
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Azure AI Content Safety Results - Images</h1>
+<h1>Azure AI Content Safety Results - Text</h1>
 
 <div>
 
@@ -13,9 +13,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Path</th>
-                <th>Image</th>
+                <th>sentence</th>
                 <th>Content Safety Severity</th>
             </tr>
         </thead>
@@ -24,19 +22,13 @@
             @foreach (var item in Model) {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.BlobClient.Name)
-                    </td>
-                    <td>
-                        <a href="@item.BlobClient.Uri">@item.BlobClient.Uri</a>
-                    </td>
-                    <td>
-                        <img src="@item.BlobClient.Uri" alt="" width="200px" />
+                        @Html.DisplayFor(modelItem => item.sentence)
                     </td>
                     <td>
                         @{
                             int counter = 0;
                             bool shown = false;
-                            @foreach (var x in item.AnalyzeImageResult.CategoriesAnalysis){
+                            @foreach (var x in item.AnalyzeTextResult.CategoriesAnalysis){
 
                                 if (x.Severity > 0) {
                                     counter++;
