@@ -47,5 +47,15 @@ module storageModule 'modules/storage.bicep' = {
   }
 }
 
+module exampleScriptModule 'modules/exampleScript.bicep' = {
+  name: 'exampleScriptModule'
+  scope: contentSafetyResourceGroup
+  params: {
+    storageAccountName: storageModule.outputs.storageAcctName
+    containerName: storageModule.outputs.storageContainerName
+    resourceGroupName: contentSafetyResourceGroup.name
+    location: general.location
+  }
+}
 output contentSafetyInstanceId string = contentSafetyModule.outputs.contentSafetyInstanceId
 output identityPrincipalId string = contentSafetyModule.outputs.identityPrincipalId

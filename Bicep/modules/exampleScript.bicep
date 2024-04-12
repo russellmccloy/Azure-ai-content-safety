@@ -22,29 +22,29 @@ resource storageAcct 'Microsoft.Storage/storageAccounts@2023-01-01' existing = {
   name: storageAccountName
 }
 
-resource userIdForScript 'Microsoft.ManagedIdentity/userAssignedIdentities@2023-01-31' = {
-  name: 'userIdForScript'
+resource userIdForExampleScript 'Microsoft.ManagedIdentity/userAssignedIdentities@2023-01-31' = {
+  name: 'userIdForExampleScript'
   location: location
 }
 
 resource roleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
-  name: guid('script-rbac', userIdForScript.id, resourceGroup().id, 'abc1234567', roleDefinitionId)
+  name: guid('script-rbac', userIdForExampleScript.id, resourceGroup().id, 'abc1234567', roleDefinitionId)
   scope: storageAcct
   properties: {
     roleDefinitionId: roleDefinitionId
-    principalId: reference(userIdForScript.id, '2023-07-31-preview').principalId
+    principalId: reference(userIdForExampleScript.id, '2023-07-31-preview').principalId
     principalType: 'ServicePrincipal'
   }
 }
 
 resource deploymentScript 'Microsoft.Resources/deploymentScripts@2023-08-01' = {
-  name: 'inlinePS'
+  name: 'inlinePowerShellScript'
   location: location
   kind: 'AzurePowerShell'
   identity: {
     type: 'UserAssigned'
     userAssignedIdentities: {
-      '${userIdForScript.id}': {}
+      '${userIdForExampleScript.id}': {}
     }
   }
   properties: {
@@ -65,22 +65,10 @@ resource deploymentScript 'Microsoft.Resources/deploymentScripts@2023-08-01' = {
       $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
       $ctx = $storageAccount.Context
 
-      # Get the list of image files in the local directory # -Filter *.jpg,*.jpeg,*.png,*.gif
-      $imageFiles = Get-ChildItem -Path $localImagePath 
+      $containersList = Get-AzStorageContainer -Context $ctx
+      $containersList
 
-      Write-Output "There are $($imageFiles.Length) images to upload"
-      
-      # Upload each image to Azure Blob Storage
-      foreach ($imageFile in $imageFiles) {
-
-        Write-Output "Uploading $($imageFile.Name) ..."
-
-        $blobName = $imageFile.Name
-        $blob = Set-AzStorageBlobContent -File $imageFile.FullName -Container $containerName -Blob $blobName -Context $ctx -Force
-        Write-Output "Uploaded $($imageFile.Name) to Azure Blob Storage."
-      }
-
-      $output = 'The images were uploaded to the Storage Account: {0}' -f $storageAccountName
+      $output = '{0}' -f $containersList
       $DeploymentScriptOutputs = @{}
       $DeploymentScriptOutputs['text'] = $output
     '''
