@@ -24,7 +24,6 @@
     "storageAccountAndContainer": { 
       "value": {
         "name": "contsftysa",
-        "location": "australiaeast",
         "containerName": "images",
         "containerAccessType": "container"
       }

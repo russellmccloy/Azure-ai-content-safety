@@ -16,7 +16,7 @@ resource contentSafetyInstance 'Microsoft.CognitiveServices/accounts@2023-10-01-
   properties: {}
 
   identity: {
-    type: 'SystemAssigned'
+    type: 'SystemAssigned' // This identity will be authorised to talk to the storage account that holds the images for Azure AI Content Safety to analyse
   }
 
   tags: {

@@ -230,6 +230,52 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "❗Analyze Image - Using a blob Url",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"image\": {\r\n        \"blobUrl\": \"https://rdmc03devcontentsafsa.blob.core.windows.net/rdmc03-dev-images/hate.jpg\"\r\n    },\r\n    \"categories\": [\r\n        \"Hate\",\r\n        \"SelfHarm\",\r\n        \"Sexual\",\r\n        \"Violence\"\r\n    ],\r\n    \"outputType\": \"FourSeverityLevels\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{content_safety_service}}/contentsafety/image:analyze?api-version=2023-10-01",
+					"protocol": "https",
+					"host": [
+						"{{content_safety_service}}"
+					],
+					"path": [
+						"contentsafety",
+						"image:analyze"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2023-10-01"
+						}
+					]
+				},
+				"description": "This will require access for the SystemAssigned identity of the Azure AI Content Safety instance to the storage account where the images for analysis live"
+			},
+			"response": []
 		}
 	],
 	"event": [
